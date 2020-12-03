@@ -1,29 +1,36 @@
-import java.util.LinkedList;
-
 public class Person {
     private String name;
-    private LinkedList<Song> likedSongs = new LinkedList<>();
+    private SongList likedSongs = new SongList();
     Person next;
 
     public Person(String name) {
         this.name = name;
+        next = null;
     }
 
     public void likeSong(String songName) {
         Song song = new Song(songName);
-        if (Interface.songs.contains(new Song(songName))) song = Interface.songs.get(Interface.songs.indexOf(song));
-        song.increaseCounter();
-        likedSongs.add(song);
-        next = null;
+        if (likedSongs.contains(likedSongs, song)) {
+            System.out.println(name + " already likes " + song);
+            return;
+        }
+        if (Interface.songs.contains(Interface.songs, song)) {
+            song = Interface.songs.get(Interface.songs, song);
+            song.increaseCounter();
+            likedSongs.add(likedSongs, song);
+        } else {
+            song.increaseCounter();
+            likedSongs = likedSongs.add(likedSongs, song);
+        }
     }
 
     public void doesntLikeSong(String songName) {
         Song song = new Song(songName);
-        likedSongs.remove(song);
-        Interface.songs.get(Interface.songs.indexOf(song)).decreaseCounter();
+        likedSongs = likedSongs.remove(likedSongs, song);
+        Interface.songs.get(Interface.songs, song).decreaseCounter();
     }
 
-    public LinkedList<Song> getLikedSongs() {
+    public SongList getLikedSongs() {
         return likedSongs;
     }
 

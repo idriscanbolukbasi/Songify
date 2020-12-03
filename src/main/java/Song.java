@@ -1,9 +1,11 @@
 public class Song implements Comparable<Song> {
     private String name;
     private int counter = 0;
+    Song next;
 
     public Song(String name) {
         this.name = name;
+        next = null;
     }
 
     public String getName() {
@@ -16,12 +18,12 @@ public class Song implements Comparable<Song> {
 
     public void increaseCounter() {
         counter++;
-        if (counter == 1) Interface.songs.add(this);
+        if (counter == 1) Interface.songs = Interface.songs.add(Interface.songs, this);
     }
 
     public void decreaseCounter() {
         counter--;
-        if (counter == 0) Interface.songs.remove(this);
+        if (counter == 0) Interface.songs = Interface.songs.remove(Interface.songs, this);
     }
 
     @Override

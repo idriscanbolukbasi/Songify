@@ -1,42 +1,39 @@
-import java.util.Collections;
-import java.util.LinkedList;
-
 public class CommandManager {
 
-    public static void CCommand(String name) {
+    public void CCommand(String name) {
         Person tempPerson = new Person(name);
-        if (Interface.database.contains(tempPerson)) {
+        if (Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("Error: A name only can exists for a person. Either delete the existing person or create a person with different name.");
             return;
         }
-        Interface.database.add(tempPerson);
+        Interface.persons = Interface.persons.add(Interface.persons, tempPerson);
         System.out.println(name + " has been added.");
     }
 
-    public static void SCommand(String name, String songName) {
+    public void SCommand(String name, String songName) {
         Person tempPerson = new Person(name);
-        if (!Interface.database.contains(tempPerson)) {
+        if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
             return;
         }
-        tempPerson = Interface.database.get(Interface.database.indexOf(tempPerson));
+        tempPerson = Interface.persons.get(Interface.persons, tempPerson);
         tempPerson.likeSong(songName);
         System.out.println(name + " likes " + songName);
     }
 
-    public static void ECommand(String name, String songName) {
+    public void ECommand(String name, String songName) {
         Person tempPerson = new Person(name);
-        if (!Interface.database.contains(tempPerson)) {
+        if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
             return;
         }
-        tempPerson = Interface.database.get(Interface.database.indexOf(tempPerson));
-        LinkedList<Song> likedSongs = tempPerson.getLikedSongs();
-        if (likedSongs.size() == 0) {
+        tempPerson = Interface.persons.get(Interface.persons, tempPerson);
+        SongList likedSongs = tempPerson.getLikedSongs();
+        if (likedSongs.size(likedSongs) == 0) {
             System.out.println(name + " doesn't like any songs.");
             return;
         }
-        if (!likedSongs.contains(new Song(songName))) {
+        if (!likedSongs.contains(likedSongs, new Song(songName))) {
             System.out.println(name + " has already doesn't like " + songName);
             return;
         }
@@ -44,53 +41,52 @@ public class CommandManager {
         System.out.println(name + " now doesn't like " + songName);
     }
 
-    public static void LCommand(String name) {
+    public void LCommand(String name) {
         Person tempPerson = new Person(name);
-        if (!Interface.database.contains(tempPerson)) {
+        if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
             return;
         }
-        tempPerson = Interface.database.get(Interface.database.indexOf(tempPerson));
-        LinkedList<Song> likedSongs = tempPerson.getLikedSongs();
-        if (likedSongs.size() == 0) {
+        tempPerson = Interface.persons.get(Interface.persons, tempPerson);
+        SongList likedSongs = tempPerson.getLikedSongs();
+        if (likedSongs.size(likedSongs) == 0) {
             System.out.println(name + " doesn't like any songs.");
             return;
         }
-        System.out.println(likedSongs.size() == 1 ? "Song liked by " + name : "Songs liked by " + name);
-        likedSongs.forEach(System.out::println);
+        System.out.println(Interface.songs.head.next == null ? "Song liked by " + name : "Songs liked by " + name);
+        Interface.songs.printList(likedSongs);
     }
 
-    public static void NCommand() {
-        if (Interface.database.size() == 0) {
+    public void NCommand() {
+        if (Interface.persons.size(Interface.persons) == 0) {
             System.out.println("There are not any persons have been added before.");
             return;
         }
-        System.out.println(Interface.database.size() == 1 ? "Person has been added: " : "Persons have been added: ");
-        Interface.database.forEach(System.out::println);
+        Interface.persons.printList(Interface.persons);
     }
 
-    public static void MCommand() {
-        if (Interface.songs.size() == 0) {
+    public void MCommand() {
+        if (Interface.songs.size(Interface.songs) == 0) {
             System.out.println("There are not any songs have been liked before.");
             return;
         }
-        System.out.println(Interface.songs.size() == 1 ? "Song has been liked: " : "Songs have been liked: ");
-        Interface.songs.forEach(System.out::println);
+        System.out.println(Interface.songs.head.next == null ? "Song has been added: " : "Songs have been added: ");
+        Interface.songs.printList(Interface.songs);
     }
 
-    public static void RCommand() {
-        if (Interface.songs.size() < 3) {
+    public void RCommand() {
+        if (Interface.songs.size(Interface.songs) < 3) {
             System.out.println("There are not 3 different songs have been added before.");
             return;
         }
-        Collections.sort(Interface.songs);
+        Interface.songs = Interface.songs.bubbleSort(Interface.songs);
         System.out.println("Most popular 3 songs are: " +
-                "\n1) " + Interface.songs.get(0) +
-                "\n2) " + Interface.songs.get(1) +
-                "\n3) " + Interface.songs.get(2));
+                "\n1) " + Interface.songs.get(Interface.songs, 0) +
+                "\n2) " + Interface.songs.get(Interface.songs, 1) +
+                "\n3) " + Interface.songs.get(Interface.songs, 2));
     }
 
-    public static boolean handle(String arguments) {
+    public boolean handle(String arguments) {
         String[] args = arguments.split(" ");
         if (args.length == 0 || arguments.length() == 0) {
             System.out.println("No commands are given.");

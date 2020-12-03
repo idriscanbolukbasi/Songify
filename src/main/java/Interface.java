@@ -1,10 +1,8 @@
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Interface {
-    public static List<Person> database = new LinkedList<>();
-    public static List<Song> songs = new LinkedList<>();
+    public static PersonList persons = new PersonList();
+    public static SongList songs = new SongList();
 
     public static void main(String[] args) {
         System.out.println("*-*-*-*-*-*-*-*-* Songify *-*-*-*-*-*-*-*-* " +
