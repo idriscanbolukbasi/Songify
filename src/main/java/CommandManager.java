@@ -1,6 +1,6 @@
 public class CommandManager {
 
-    public void CCommand(String name) {
+    public static void CCommand(String name) {
         Person tempPerson = new Person(name);
         if (Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("Error: A name only can exists for a person. Either delete the existing person or create a person with different name.");
@@ -10,7 +10,7 @@ public class CommandManager {
         System.out.println(name + " has been added.");
     }
 
-    public void SCommand(String name, String songName) {
+    public static void SCommand(String name, String songName) {
         Person tempPerson = new Person(name);
         if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
@@ -21,7 +21,7 @@ public class CommandManager {
         System.out.println(name + " likes " + songName);
     }
 
-    public void ECommand(String name, String songName) {
+    public static void ECommand(String name, String songName) {
         Person tempPerson = new Person(name);
         if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
@@ -41,7 +41,7 @@ public class CommandManager {
         System.out.println(name + " now doesn't like " + songName);
     }
 
-    public void LCommand(String name) {
+    public static void LCommand(String name) {
         Person tempPerson = new Person(name);
         if (!Interface.persons.contains(Interface.persons, tempPerson)) {
             System.out.println("There's not such a person named " + name);
@@ -57,7 +57,7 @@ public class CommandManager {
         Interface.songs.printList(likedSongs);
     }
 
-    public void NCommand() {
+    public static void NCommand() {
         if (Interface.persons.size(Interface.persons) == 0) {
             System.out.println("There are not any persons have been added before.");
             return;
@@ -65,7 +65,7 @@ public class CommandManager {
         Interface.persons.printList(Interface.persons);
     }
 
-    public void MCommand() {
+    public static void MCommand() {
         if (Interface.songs.size(Interface.songs) == 0) {
             System.out.println("There are not any songs have been liked before.");
             return;
@@ -74,7 +74,7 @@ public class CommandManager {
         Interface.songs.printList(Interface.songs);
     }
 
-    public void RCommand() {
+    public static void RCommand() {
         if (Interface.songs.size(Interface.songs) < 3) {
             System.out.println("There are not 3 different songs have been added before.");
             return;
@@ -86,7 +86,7 @@ public class CommandManager {
                 "\n3) " + Interface.songs.get(Interface.songs, 2));
     }
 
-    public boolean handle(String arguments) {
+    public static boolean handle(String arguments) {
         String[] args = arguments.split(" ");
         if (args.length == 0 || arguments.length() == 0) {
             System.out.println("No commands are given.");
