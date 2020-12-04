@@ -71,8 +71,9 @@ public class SongList {
 
         if (index == 0 && currentNode != null) return currentNode;
 
-        while (currentNode != null || index >= 0) {
-            index--;
+        for (int i = 0; i < index; i++) {
+            if (currentNode.next == null) return null;
+            currentNode = currentNode.next;
         }
 
         return currentNode;
@@ -92,27 +93,22 @@ public class SongList {
         return size;
     }
 
-    public SongList bubbleSort(SongList list) {
-        Song currentNode = list.head, prev = null;
-        for (int i = 0; i < list.size(list); i++) {
-            while (currentNode != null) {
-                prev = currentNode;
-                if (currentNode.next == null) {
-                    currentNode = currentNode.next;
-                    continue;
+    public SongList sort(SongList list) {
+        int size = list.size(list);
+        if (size > 1) {
+            for (int i = 0; i < size; i++ ) {
+                Song currentNode = list.head;
+                Song next = head.next;
+                for (int j = 0; j < size - 1; j++) {
+                    if (currentNode.getCounter() < next.getCounter()) {
+                        currentNode.swap(next);
+                    }
+                    currentNode = next;
+                    next = next.next;
                 }
-                if (currentNode.getCounter() < currentNode.next.getCounter()) {
-                    Song rest = currentNode.next.next;
-                    prev.next = currentNode.next;
-                    currentNode.next.next = currentNode;
-                    currentNode.next = rest;
-                }
-                currentNode = currentNode.next;
             }
         }
         return list;
     }
-
-
 
 }

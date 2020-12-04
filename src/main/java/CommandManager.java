@@ -18,7 +18,6 @@ public class CommandManager {
         }
         tempPerson = Interface.persons.get(Interface.persons, tempPerson);
         tempPerson.likeSong(songName);
-        System.out.println(name + " likes " + songName);
     }
 
     public static void ECommand(String name, String songName) {
@@ -79,11 +78,11 @@ public class CommandManager {
             System.out.println("There are not 3 different songs have been added before.");
             return;
         }
-        Interface.songs = Interface.songs.bubbleSort(Interface.songs);
+        SongList sorted = Interface.songs.sort(Interface.songs);
         System.out.println("Most popular 3 songs are: " +
-                "\n1) " + Interface.songs.get(Interface.songs, 0) +
-                "\n2) " + Interface.songs.get(Interface.songs, 1) +
-                "\n3) " + Interface.songs.get(Interface.songs, 2));
+                "\n1) " + sorted.get(sorted, 0) +
+                "\n2) " + sorted.get(sorted, 1)+
+                "\n3) " + sorted.get(sorted, 2));
     }
 
     public static boolean handle(String arguments) {

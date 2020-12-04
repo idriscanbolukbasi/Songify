@@ -11,16 +11,20 @@ public class Person {
     public void likeSong(String songName) {
         Song song = new Song(songName);
         if (likedSongs.contains(likedSongs, song)) {
+            System.out.println(-1);
             System.out.println(name + " already likes " + song);
             return;
         }
         if (Interface.songs.contains(Interface.songs, song)) {
+            likedSongs = likedSongs.add(likedSongs, song);
             song = Interface.songs.get(Interface.songs, song);
             song.increaseCounter();
-            likedSongs.add(likedSongs, song);
+            System.out.println(name + " likes " + songName);
         } else {
             song.increaseCounter();
-            likedSongs = likedSongs.add(likedSongs, song);
+            Song likedSong = new Song(songName);
+            likedSongs = likedSongs.add(likedSongs, likedSong);
+            System.out.println(name + " likes " + songName);
         }
     }
 

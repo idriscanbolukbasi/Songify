@@ -26,6 +26,23 @@ public class Song implements Comparable<Song> {
         if (counter == 0) Interface.songs = Interface.songs.remove(Interface.songs, this);
     }
 
+    public void swap(Song song) {
+        String tempName = song.getName();
+        int tempCounter = song.getCounter();
+        song.setName(name);
+        song.setCounter(counter);
+        this.name = tempName;
+        this.counter = tempCounter;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
     @Override
     public int compareTo(Song o) {
         return Integer.compare(o.getCounter(), counter);
