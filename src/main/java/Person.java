@@ -11,7 +11,6 @@ public class Person {
     public void likeSong(String songName) {
         Song song = new Song(songName);
         if (likedSongs.contains(likedSongs, song)) {
-            System.out.println(-1);
             System.out.println(name + " already likes " + song);
             return;
         }
