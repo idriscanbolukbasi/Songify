@@ -30,7 +30,7 @@ public class Interface {
         Scanner scanner = null;
         scanner = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         while (true) { // while loop is required to always get inputs from user
-            if (!CommandManager.handle(new String(scanner.next().getBytes("UTF-8"), StandardCharsets.UTF_8)))  // we'll use CommandManager class which helps out to simply and organize our code
+            if (!CommandManager.handle(new String(scanner.next().getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8)))  // we'll use CommandManager class which helps out to simply and organize our code
                 System.out.println("Please supply an argument."); // if given input is not suitable we must get a new input
             System.out.print("> "); // that '>' symbol indicates the program awaiting a response from user
         }
