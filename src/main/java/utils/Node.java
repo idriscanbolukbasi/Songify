@@ -18,7 +18,8 @@ public abstract class Node<T> {
         this.data = data;
     }
 
-    public void swapData(Node<T> node) {}
+    public void swapData(Node<T> node) {
+    }
 
     public String getName() {
         return name;
