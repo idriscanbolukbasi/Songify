@@ -11,7 +11,7 @@ public class Interface {
     public static LinkedList<Person> persons = new LinkedList<>();
     public static LinkedList<Song> songs = new LinkedList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8")); // to avoid platform (OS) dependent outputs like Uğur -> U??ur
         } catch (UnsupportedEncodingException e) {
@@ -34,7 +34,7 @@ public class Interface {
             System.out.println("Oops, looks like your OS does not support UTF-8"); // if OS does not support UTF-8
         }
         while (true) { // while loop is required to always get inputs from user
-            if (!CommandManager.handle(new String(scanner.next().getBytes(), StandardCharsets.UTF_8)))  // we'll use CommandManager class which helps out to simply and organize our code
+            if (!CommandManager.handle(new String(scanner.next().getBytes("UTF-8"), Charset.forName("UTF-8"))))  // we'll use CommandManager class which helps out to simply and organize our code
                 System.out.println("Please supply an argument."); // if given input is not suitable we must get a new input
             System.out.print("> "); // that '>' symbol indicates the program awaiting a response from user
         }
