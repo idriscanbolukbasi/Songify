@@ -1,5 +1,6 @@
 import utils.LinkedList;
 
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
@@ -24,7 +25,12 @@ public class Interface {
                 "\nM: List all the songs that liked by anyone." +
                 "\nR: Recommends the most popular 3 different songs.");
         System.out.print("> ");  // that '>' symbol indicates the program awaiting a response from user
-        Scanner scanner = new Scanner(System.in, "UTF-8");
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Oops, looks like your OS does not support UTF-8"); // if OS does not support UTF-8
+        }
         while (true) { // while loop is required to always get inputs from user
             if (!CommandManager.handle(scanner.nextLine()))  // we'll use CommandManager class which helps out to simply and organize our code
                 System.out.println("Please supply an argument."); // if given input is not suitable we must get a new input
