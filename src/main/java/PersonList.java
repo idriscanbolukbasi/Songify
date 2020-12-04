@@ -1,3 +1,4 @@
+/** Deprecated version of LinkedList implementation new version is available on utils package
 public class PersonList {
     Person head;
 
@@ -13,7 +14,6 @@ public class PersonList {
 
     public void printList(PersonList list) {
         Person currentNode = list.head;
-        System.out.println(head.next == null ? "Person has been added: " : "Persons have been added: ");
 
         while (currentNode != null) {
             System.out.println(currentNode);
@@ -82,3 +82,4 @@ public class PersonList {
     }
 
 }
+ **/

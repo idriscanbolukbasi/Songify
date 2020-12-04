@@ -1,3 +1,5 @@
+import utils.LinkedList;
+
 public class CommandManager {
 
     public static void CCommand(String name) {
@@ -27,7 +29,7 @@ public class CommandManager {
             return;
         }
         tempPerson = Interface.persons.get(Interface.persons, tempPerson);
-        SongList likedSongs = tempPerson.getLikedSongs();
+        LinkedList<Song> likedSongs = tempPerson.getLikedSongs();
         if (likedSongs.size(likedSongs) == 0) {
             System.out.println(name + " doesn't like any songs.");
             return;
@@ -47,12 +49,12 @@ public class CommandManager {
             return;
         }
         tempPerson = Interface.persons.get(Interface.persons, tempPerson);
-        SongList likedSongs = tempPerson.getLikedSongs();
+        LinkedList<Song> likedSongs = tempPerson.getLikedSongs();
         if (likedSongs.size(likedSongs) == 0) {
             System.out.println(name + " doesn't like any songs.");
             return;
         }
-        System.out.println(Interface.songs.head.next == null ? "Song liked by " + name : "Songs liked by " + name);
+        System.out.println(likedSongs.size(likedSongs) == 1 ? "Song liked by " + name : "Songs liked by " + name);
         Interface.songs.printList(likedSongs);
     }
 
@@ -69,7 +71,7 @@ public class CommandManager {
             System.out.println("There are not any songs have been liked before.");
             return;
         }
-        System.out.println(Interface.songs.head.next == null ? "Song has been added: " : "Songs have been added: ");
+        System.out.println(Interface.songs.size(Interface.songs) == 1 ? "Song has been added: " : "Songs have been added: ");
         Interface.songs.printList(Interface.songs);
     }
 
@@ -78,11 +80,12 @@ public class CommandManager {
             System.out.println("There are not 3 different songs have been added before.");
             return;
         }
-        SongList sorted = Interface.songs.sort(Interface.songs);
+        LinkedList<Song> sorted = Interface.songs.sort(Interface.songs);
         System.out.println("Most popular 3 songs are: " +
                 "\n1) " + sorted.get(sorted, 0) +
                 "\n2) " + sorted.get(sorted, 1)+
                 "\n3) " + sorted.get(sorted, 2));
+        sorted.printList(sorted);
     }
 
     public static boolean handle(String arguments) {

@@ -1,3 +1,4 @@
+/** Deprecated version of LinkedList implementation new version is available on utils package
 public class SongList {
     Song head;
 
@@ -101,7 +102,7 @@ public class SongList {
                 Song next = head.next;
                 for (int j = 0; j < size - 1; j++) {
                     if (currentNode.getCounter() < next.getCounter()) {
-                        currentNode.swap(next);
+                        //currentNode.swap(next);
                     }
                     currentNode = next;
                     next = next.next;
@@ -112,3 +113,4 @@ public class SongList {
     }
 
 }
+ **/

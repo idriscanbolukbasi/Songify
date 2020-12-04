@@ -1,11 +1,11 @@
-public class Song implements Comparable<Song> {
+import utils.Node;
+
+public class Song extends Node<Song> implements Comparable<Song> {
     private String name;
-    private int counter = 0;
-    Song next;
 
     public Song(String name) {
+        super(name);
         this.name = name;
-        next = null;
     }
 
     public String getName() {
@@ -13,39 +13,26 @@ public class Song implements Comparable<Song> {
     }
 
     public int getCounter() {
-        return counter;
+        return getData();
     }
 
     public void increaseCounter() {
-        counter++;
-        if (counter == 1) Interface.songs = Interface.songs.add(Interface.songs, this);
+        setData(getData() + 1);
+        if (getData() == 1) Interface.songs = Interface.songs.add(Interface.songs, this);
     }
 
     public void decreaseCounter() {
-        counter--;
-        if (counter == 0) Interface.songs = Interface.songs.remove(Interface.songs, this);
-    }
-
-    public void swap(Song song) {
-        String tempName = song.getName();
-        int tempCounter = song.getCounter();
-        song.setName(name);
-        song.setCounter(counter);
-        this.name = tempName;
-        this.counter = tempCounter;
+        setData(getData() - 1);
+        if (getData() == 0) Interface.songs = Interface.songs.remove(Interface.songs, this);
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
     @Override
     public int compareTo(Song o) {
-        return Integer.compare(o.getCounter(), counter);
+        return Integer.compare(o.getData(), getData());
     }
 
     @Override
@@ -58,5 +45,15 @@ public class Song implements Comparable<Song> {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    @Override
+    public void swapData(Node<Song> node) {
+        String tempName = node.getName();
+        int tempData = node.getData();
+        node.setName(name);
+        node.setData(getData());
+        this.name = tempName;
+        this.setData(tempData);
     }
 }
