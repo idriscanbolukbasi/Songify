@@ -24,7 +24,7 @@ public class Interface {
                 "\nM: List all the songs that liked by anyone." +
                 "\nR: Recommends the most popular 3 different songs.");
         System.out.print("> ");  // that '>' symbol indicates the program awaiting a response from user
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, "UTF-8");
         while (true) { // while loop is required to always get inputs from user
             if (!CommandManager.handle(scanner.nextLine()))  // we'll use CommandManager class which helps out to simply and organize our code
                 System.out.println("Please supply an argument."); // if given input is not suitable we must get a new input
