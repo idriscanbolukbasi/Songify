@@ -23,7 +23,8 @@ public class Song extends Node<Song> implements Comparable<Song> {
 
     public void decreaseCounter() { // that means the songs is just unliked by anyone who liked before
         setData(getData() - 1);
-        if (getData() == 0) Interface.songs = Interface.songs.remove(Interface.songs, this); // if the song is doesn't liked by anyone
+        if (getData() == 0)
+            Interface.songs = Interface.songs.remove(Interface.songs, this); // if the song is doesn't liked by anyone
     } // it should be removed from Interface.songs
 
     @Override

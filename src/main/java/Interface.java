@@ -1,7 +1,5 @@
 import utils.LinkedList;
 
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Interface {
