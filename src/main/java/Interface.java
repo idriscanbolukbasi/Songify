@@ -3,6 +3,8 @@ import utils.LinkedList;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Interface {
@@ -32,7 +34,7 @@ public class Interface {
             System.out.println("Oops, looks like your OS does not support UTF-8"); // if OS does not support UTF-8
         }
         while (true) { // while loop is required to always get inputs from user
-            if (!CommandManager.handle(scanner.nextLine()))  // we'll use CommandManager class which helps out to simply and organize our code
+            if (!CommandManager.handle(new String(scanner.next().getBytes(), StandardCharsets.UTF_8)))  // we'll use CommandManager class which helps out to simply and organize our code
                 System.out.println("Please supply an argument."); // if given input is not suitable we must get a new input
             System.out.print("> "); // that '>' symbol indicates the program awaiting a response from user
         }
