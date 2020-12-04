@@ -85,7 +85,6 @@ public class CommandManager {
                 "\n1) " + sorted.get(sorted, 0) +
                 "\n2) " + sorted.get(sorted, 1) +
                 "\n3) " + sorted.get(sorted, 2));
-        sorted.printList(sorted);
     }
 
     public static boolean handle(String arguments) { // to handle given arguments (commands)
