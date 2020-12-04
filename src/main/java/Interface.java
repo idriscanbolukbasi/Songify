@@ -1,3 +1,5 @@
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Interface {
@@ -5,6 +7,11 @@ public class Interface {
     public static SongList songs = new SongList();
 
     public static void main(String[] args) {
+        try {
+            System.setOut(new PrintStream(System.out, true, "UTF-8")); // to avoid platform (OS) dependent outputs like Uğur -> U??ur
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Looks like your OS does not support UTF-8");
+        }
         System.out.println("*-*-*-*-*-*-*-*-* Songify *-*-*-*-*-*-*-*-* " +
                 "\nWelcome to Songify, all of the commands are given below:" +
                 "\nC <Name>: Creates a person with the name given in the line." +
