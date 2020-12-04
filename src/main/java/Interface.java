@@ -9,7 +9,6 @@ public class Interface {
     public static LinkedList<Song> songs = new LinkedList<>();
 
     public static void main(String[] args) {
-        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8)); // to avoid platform (OS) dependent outputs like Uğur -> U??ur
         System.out.println("*-*-*-*-*-*-*-*-* Songify *-*-*-*-*-*-*-*-* " + // our simple menu
                 "\nWelcome to Songify, all of the commands are given below:" +
                 "\nC <Name>: Creates a person with the name given in the line." +
